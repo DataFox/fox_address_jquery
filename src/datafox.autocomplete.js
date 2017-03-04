@@ -63,7 +63,7 @@
         lookup: null,
         onSelect: null,
         width: 'auto',
-        minChars: 1,
+        minChars: 3,
         maxHeight: 300,
         deferRequestBy: 0,
         params: {},
@@ -969,8 +969,14 @@
       that.signalHint(null);
       that.suggestions = [];
       that.selection = suggestion;
-
-      console.log(that.options.formFields)
+      $.each(that.options.formFields, function(optionValue, fieldName) {
+        if ($(fieldName).length > 0){
+          var parsedKeyName = optionValue.replace(/([A-Z])/g, function($1) {
+            return "_" + $1.toLowerCase();
+          });
+          $(fieldName).val(that.selection.dataset[parsedKeyName])
+        }
+      })
     },
 
     getValue: function(value) {
