@@ -23,25 +23,26 @@ This example will add auticomplete to field `#address-lookup-field` and onSelect
     })
 ````
 
-###Configuration Settings
+### Configuration Settings
   * `serviceUrl`: API endpoint
   * `apiToken`: API Access Token
   * `formFields`: List of fields to map values into
 
-  `address`: Full address line
-  `buildingName`: Building name if available
-  `flatNumber`: Flat/Unit number if available
-  `highlight`: Highlighted result
-  `latitude`: Latitude
-  `longitude`: Longitude
-  `localityName`: Suburb name
-  `lotId`: Full Plan/Lot ID
-  `lotNumber`: Lookup Plan/Lot ID
-  `postcode`: Location Postcode
-  `state`: State Name
-  `streetName`: Street Name
-  `streetSuffix`: Street Suffix
-  `streetType`: Street Type
+#### formFields Dataset
+  * `address`: Full address line
+  * `buildingName`: Building name if available
+  * `flatNumber`: Flat/Unit number if available
+  * `highlight`: Highlighted result
+  * `latitude`: Latitude
+  * `longitude`: Longitude
+  * `localityName`: Suburb name
+  * `lotId`: Full Plan/Lot ID
+  * `lotNumber`: Lookup Plan/Lot ID
+  * `postcode`: Location Postcode
+  * `state`: State Name
+  * `streetName`: Street Name
+  * `streetSuffix`: Street Suffix
+  * `streetType`: Street Type
 
 ## Instance Methods
 
