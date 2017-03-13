@@ -84,6 +84,7 @@
         triggerSelectOnValidInput: true,
         preventBadQueries: false,
         formFields: {},
+        useNA: false,
         lookupFilter: function(suggestion, originalQuery, queryLowerCase) {
           return suggestion.value.toLowerCase().indexOf(queryLowerCase) !== -1;
         },
@@ -958,6 +959,7 @@
     onSelect: function(index) {
       var that = this,
         onSelectCallback = that.options.onSelect,
+        useNA = that.options.useNA,
         suggestion = that.suggestions[index];
 
       that.currentValue = that.getValue(suggestion.value);
@@ -974,7 +976,14 @@
           var parsedKeyName = optionValue.replace(/([A-Z])/g, function($1) {
             return "_" + $1.toLowerCase();
           });
-          $(fieldName).val(that.selection.dataset[parsedKeyName])
+          var selectedValue = that.selection.dataset[parsedKeyName]
+          if (selectedValue) {
+            $(fieldName).val(selectedValue)
+          } else {
+            if(useNA){
+              $(fieldName).val('N/A')
+            }
+          }
         }
       })
       if ($.isFunction(onSelectCallback)) {
