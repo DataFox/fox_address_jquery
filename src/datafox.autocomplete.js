@@ -977,6 +977,9 @@
           $(fieldName).val(that.selection.dataset[parsedKeyName])
         }
       })
+      if ($.isFunction(onSelectCallback)) {
+        onSelectCallback.call(that.element, suggestion);
+      }
     },
 
     getValue: function(value) {
