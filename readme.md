@@ -70,4 +70,4 @@ copies or substantial portions of the Software.
 
 Tomas Kirda / [@tkirda](https://twitter.com/tkirda)
 
-Alexander Tsirel / [@noma4i](github.com/noma4i)
+Alexander Tsirel / [@noma4i](https://github.com/noma4i)
