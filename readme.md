@@ -1,9 +1,9 @@
-#Datafox AU address autocomplete.
+# Datafox AU address autocomplete.
 
 [www.data-fox.com.au](https://data-fox.com.au/)
 
 
-##API
+## API
 
 * `$(selector).dataAddress(options);`
     * Sets up autocomplete for input field(s).
@@ -15,7 +15,7 @@ This example will add auticomplete to field `#address-lookup-field` and onSelect
 
 ````
   $('#address-lookup-field').dataAddress({
-      serviceUrl: 'http://api.data-fox.com.au/search',
+      serviceUrl: 'https://api.data-fox.com.au/v1/geo/search',
       apiToken: '##################',
       formFields: {
         streetName: '#streetNameFieldId'
@@ -58,7 +58,7 @@ Autocomplete instance has following methods:
 
 
 
-##License
+## License
 
 Based on Ajax Autocomplete for jQuery which is freely distributable under the
 terms of an MIT-style [license](https://github.com/devbridge/jQuery-Autocomplete/blob/master/dist/license.txt).
@@ -66,7 +66,8 @@ terms of an MIT-style [license](https://github.com/devbridge/jQuery-Autocomplete
 Copyright notice and permission notice shall be included in all
 copies or substantial portions of the Software.
 
-##Authors
+## Authors
 
 Tomas Kirda / [@tkirda](https://twitter.com/tkirda)
-Alexander Tsirel / [@noma4i](https://twitter.com/noma4i)
+
+Alexander Tsirel / [@noma4i](github.com/noma4i)
