@@ -641,9 +641,11 @@
           that.processResponse(result, q, cacheKey);
           options.onSearchComplete.call(that.element, q, result.suggestions);
         }).fail(function(jqXHR, textStatus, errorThrown) {
-          var response = JSON.parse(jqXHR.responseText);
-          if (response.message.length) {
-            console.warn(response.message);
+          if (jqXHR.responseText && jqXHR.responseText.length){
+            var response = JSON.parse(jqXHR.responseText);
+            if (response.message.length) {
+              console.warn(response.message);
+            }
           }
           options.onSearchError.call(that.element, q, jqXHR, textStatus, errorThrown);
         });
