@@ -17,6 +17,7 @@ This example will add auticomplete to field `#address-lookup-field` and onSelect
   $('#address-lookup-field').dataAddress({
       serviceUrl: 'https://api.data-fox.com.au/v1/geo/search',
       apiToken: '##################',
+      useNA: true
       formFields: {
         streetName: '#streetNameFieldId'
       }
@@ -26,6 +27,7 @@ This example will add auticomplete to field `#address-lookup-field` and onSelect
 ### Configuration Settings
   * `serviceUrl`: API endpoint
   * `apiToken`: API Access Token
+  * `useNA`: Pass N/A to form field
   * `formFields`: List of fields to map values into
 
 #### formFields Dataset

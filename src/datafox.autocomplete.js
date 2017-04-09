@@ -1,5 +1,5 @@
 /**
- *  Datafox AU address autocomplete.
+ *  Datafox AU address autocomplete. v1.3.1
  *  Based on Ajax Autocomplete for jQuery.
  *  (c) 2017 Tomas Kirda
  *
@@ -58,6 +58,7 @@
       defaults = {
         ajaxSettings: {},
         autoSelectFirst: false,
+        apiToken: null,
         appendTo: document.body,
         serviceUrl: null,
         lookup: null,
@@ -623,6 +624,7 @@
 
         ajaxSettings = {
           url: serviceUrl,
+          headers: {"Authorization": options.apiToken},
           data: params,
           type: options.type,
           dataType: options.dataType
