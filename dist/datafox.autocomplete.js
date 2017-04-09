@@ -624,7 +624,9 @@
 
         ajaxSettings = {
           url: serviceUrl,
-          headers: {"Authorization": options.apiToken},
+          headers: {
+            "Authorization": options.apiToken
+          },
           data: params,
           type: options.type,
           dataType: options.dataType
@@ -639,6 +641,10 @@
           that.processResponse(result, q, cacheKey);
           options.onSearchComplete.call(that.element, q, result.suggestions);
         }).fail(function(jqXHR, textStatus, errorThrown) {
+          var response = JSON.parse(jqXHR.responseText);
+          if (response.message.length) {
+            console.warn(response.message);
+          }
           options.onSearchError.call(that.element, q, jqXHR, textStatus, errorThrown);
         });
       } else {
@@ -974,7 +980,7 @@
       that.suggestions = [];
       that.selection = suggestion;
       $.each(that.options.formFields, function(optionValue, fieldName) {
-        if ($(fieldName).length > 0){
+        if ($(fieldName).length > 0) {
           var parsedKeyName = optionValue.replace(/([A-Z])/g, function($1) {
             return "_" + $1.toLowerCase();
           });
@@ -982,7 +988,7 @@
           if (selectedValue) {
             $(fieldName).val(selectedValue)
           } else {
-            if(useNA){
+            if (useNA) {
               $(fieldName).val('N/A')
             }
           }
