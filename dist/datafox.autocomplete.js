@@ -144,21 +144,10 @@
 
   $.Autocomplete = Autocomplete;
 
-  Autocomplete.formatResult = function(suggestion, currentValue) {
-    // Do not replace anything if there current value is empty
-    if (!currentValue) {
-      return suggestion.value;
-    }
-
-    var pattern = '(' + utils.escapeRegExChars(currentValue) + ')';
-
-    return suggestion.value
-      .replace(new RegExp(pattern, 'gi'), '<strong>$1<\/strong>')
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/&lt;(\/?strong)&gt;/g, '<$1>');
+  Autocomplete.formatResult = function(suggestion, _currentValue) {
+    return suggestion.dataset.highlight
+      .replace(new RegExp('<em>', 'gi'), '<strong>')
+      .replace(new RegExp('</em>', 'gi'), '</strong>');
   };
 
   Autocomplete.formatGroup = function(suggestion, category) {
@@ -641,7 +630,7 @@
           that.processResponse(result, q, cacheKey);
           options.onSearchComplete.call(that.element, q, result.suggestions);
         }).fail(function(jqXHR, textStatus, errorThrown) {
-          if (jqXHR.responseText && jqXHR.responseText.length){
+          if (jqXHR.responseText && jqXHR.responseText.length) {
             var response = JSON.parse(jqXHR.responseText);
             if (response.message.length) {
               console.warn(response.message);
@@ -654,20 +643,7 @@
       }
     },
 
-    isBadQuery: function(q) {
-      if (!this.options.preventBadQueries) {
-        return false;
-      }
-
-      var badQueries = this.badQueries,
-        i = badQueries.length;
-
-      while (i--) {
-        if (q.indexOf(badQueries[i]) === 0) {
-          return true;
-        }
-      }
-
+    isBadQuery: function(_q) {
       return false;
     },
 
@@ -730,7 +706,6 @@
         if (groupBy) {
           html += formatGroup(suggestion, value, i);
         }
-
         html += '<div class="' + className + '" data-index="' + i + '">' + formatResult(suggestion, value, i) + '</div>';
       });
 
