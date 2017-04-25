@@ -630,7 +630,7 @@
           that.processResponse(result, q, cacheKey);
           options.onSearchComplete.call(that.element, q, result.suggestions);
         }).fail(function(jqXHR, textStatus, errorThrown) {
-          if (jqXHR.responseText && jqXHR.responseText.length) {
+          if (jqXHR.responseText && jqXHR.responseText.length){
             var response = JSON.parse(jqXHR.responseText);
             if (response.message.length) {
               console.warn(response.message);
@@ -945,9 +945,26 @@
       var that = this,
         onSelectCallback = that.options.onSelect,
         useNA = that.options.useNA,
-        suggestion = that.suggestions[index];
-
+        suggestion = that.suggestions[index],
+        total = that.suggestions.length;
       that.currentValue = that.getValue(suggestion.value);
+      $.ajax({
+        url: 'https://api.data-fox.com.au/v1/geo/service/trac',
+        type: 'POST',
+        headers: {
+          'Authorization': that.options.apiToken
+        },
+        data: JSON.stringify({
+          query: $(that.element).val(),
+          index: index,
+          total: total
+        }),
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        success: function() {
+          return;
+        }
+      });
 
       if (that.currentValue !== that.el.val() && !that.options.preserveInput) {
         that.el.val(that.currentValue);
@@ -970,7 +987,7 @@
             }
           }
         }
-      })
+      });
       if ($.isFunction(onSelectCallback)) {
         onSelectCallback.call(that.element, suggestion);
       }
