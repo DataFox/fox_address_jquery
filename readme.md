@@ -30,6 +30,9 @@ This example will add auticomplete to field `#address-lookup-field` and onSelect
   * `useNA`: Pass N/A to form field
   * `formFields`: List of fields to map values into
 
+#### Callbacks
+  * `onSelect: function (suggestion) {}`: Callback function invoked when user selects suggestion from the list. this inside callback refers to input HtmlElement.
+
 #### formFields Dataset
   * `address`: Full address line
   * `buildingName`: Building name if available
