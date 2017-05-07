@@ -1,5 +1,5 @@
 /**
- *  Datafox AU address autocomplete.
+ *  AtomatoData AU address autocomplete.
  *  Based on Ajax Autocomplete for jQuery.
  *  (c) 2017 Tomas Kirda
  *
@@ -949,7 +949,7 @@
         total = that.suggestions.length;
       that.currentValue = that.getValue(suggestion.value);
       $.ajax({
-        url: 'https://api.data-fox.com.au/v1/geo/service/trac',
+        url: 'https://api.atomatodata.com.au/v1/geo/service/trac',
         type: 'POST',
         headers: {
           'Authorization': that.options.apiToken

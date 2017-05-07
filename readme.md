@@ -1,6 +1,6 @@
-# Datafox AU address autocomplete.
+# AtomatoData AU address autocomplete.
 
-[www.data-fox.com.au](https://data-fox.com.au/)
+[www.atomatodata.com.au](https://atomatodata.com.au/)
 
 
 ## API
@@ -15,7 +15,7 @@ This example will add auticomplete to field `#address-lookup-field` and onSelect
 
 ````
   $('#address-lookup-field').dataAddress({
-      serviceUrl: 'https://api.data-fox.com.au/v1/geo/search/lookup',
+      serviceUrl: 'https://api.atomatodata.com.au/v1/geo/search/lookup',
       apiToken: '##################',
       useNA: true
       formFields: {

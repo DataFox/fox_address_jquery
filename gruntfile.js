@@ -7,8 +7,8 @@ module.exports = function(grunt) {
     pkg: pkg,
     uglify: {
       build: {
-        src: 'src/datafox.autocomplete.js',
-        dest: 'dist/datafox.autocomplete.min.js'
+        src: 'src/atomatodata.autocomplete.js',
+        dest: 'dist/atomatodata.autocomplete.min.js'
       }
     }
   });
@@ -21,8 +21,8 @@ module.exports = function(grunt) {
 
   grunt.task.registerTask('build', 'Create release', function() {
     var version = pkg.version,
-        src = grunt.file.read('src/datafox.autocomplete.js').replace('%version%', version),
-        filePath = 'dist/datafox.autocomplete.js';
+        src = grunt.file.read('src/atomatodata.autocomplete.js').replace('%version%', version),
+        filePath = 'dist/atomatodata.autocomplete.js';
 
     // Update not minimized release version:
     console.log('Updating: ' + filePath);
@@ -32,7 +32,7 @@ module.exports = function(grunt) {
     grunt.task.run('uglify');
 
     // Update plugin version:
-    filePath = 'datafox.autocomplete.json';
+    filePath = 'atomatodata.autocomplete.json';
     src = grunt.file.readJSON(filePath);
 
     if (src.version !== version){
